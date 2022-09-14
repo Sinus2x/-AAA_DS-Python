@@ -1,9 +1,11 @@
+from itertools import chain
 
 
 class CountVectorizer:
 
     def __init__(self, corpus: [[str]]):
-        self.__features = []
+        words = [sent.split() for sent in corpus]
+        self.__features = list(set(chain.from_iterable(words)))
 
     def fit_transform(self):
         pass
