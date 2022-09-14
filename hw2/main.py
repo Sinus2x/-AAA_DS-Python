@@ -3,8 +3,8 @@ from itertools import chain
 
 class CountVectorizer:
 
-    def __init__(self, corpus: [[str]]):
-        words = [sent.split() for sent in corpus]
+    def __init__(self, corpus: [[str]], lowercase=True):
+        words = [sent.lower().split() if lowercase else sent.split() for sent in corpus]
         self.__features = list(set(chain.from_iterable(words)))
 
     def fit_transform(self):
