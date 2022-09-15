@@ -11,14 +11,14 @@ class CountVectorizer:
 
     def fit_transform(self, corpus: [str], lowercase=True) -> [[int]]:
         tdm = []
-        counters = [dict(zip(self.__features, [0] * self.__n_features)) for _ in corpus]
+        counters = [dict.fromkeys(self.__features, 0) for _ in corpus]
         counters = zip(counters, corpus)
         for c, sent in counters:
             tokens = sent.lower().split() if lowercase else sent.split()
             for w in tokens:
                 if w in self.__features:
                     c[w] += 1
-            tdm.append(list(c.items()))
+            tdm.append(list(c.values()))
         return tdm
 
     @property
