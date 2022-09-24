@@ -7,9 +7,11 @@ class ObjFromJSON:
         for key, val in data.items():
             name = key + '_' if iskeyword(key) else key
             if isinstance(key, (list, tuple)):
-                setattr(self, name, [ObjFromJSON(v) if isinstance(v, dict) else v for v in val])
+                setattr(self, name, [ObjFromJSON(v) if isinstance(v, dict)
+                                     else v for v in val])
             else:
-                setattr(self, name, ObjFromJSON(val) if isinstance(val, dict) else val)
+                setattr(self, name,
+                        ObjFromJSON(val) if isinstance(val, dict) else val)
 
 
 class ColorizeMixin:
@@ -62,4 +64,3 @@ if __name__ == '__main__':
 
     ad2 = json.loads(ad2_str, strict=False)
     print(Advert(ad2))
-
