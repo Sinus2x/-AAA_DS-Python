@@ -6,7 +6,7 @@ class ObjFromJSON:
     def __init__(self, data: dict[str, object]) -> None:
         for key, val in data.items():
             name = key + '_' if iskeyword(key) else key
-            if isinstance(key, (list, tuple)):
+            if isinstance(val, (list, tuple)):
                 setattr(self, name, [ObjFromJSON(v) if isinstance(v, dict)
                                      else v for v in val])
             else:
@@ -15,13 +15,15 @@ class ObjFromJSON:
 
 
 class ColorizeMixin:
-    repr_color_code = 33
 
-    def __repr__(self):
-        return f'\033[1;{ColorizeMixin.repr_color_code};40m '
+    def __str__(self):
+        return f'\033[1;{self.repr_color_code};40m {self.title} ' \
+               f'| {self.price} ₽'
 
 
 class Advert(ColorizeMixin, ObjFromJSON):
+    repr_color_code = 33
+
     def __init__(self, data: dict[str, object]):
         # initialization from dict
         # check if 'title' in fields
@@ -37,7 +39,7 @@ class Advert(ColorizeMixin, ObjFromJSON):
         super().__init__(data)
 
     def __repr__(self):
-        return super().__repr__() + f'{self.title} | {self.price} ₽'
+        return f'{self.title} | {self.price} ₽'
 
 
 if __name__ == '__main__':
