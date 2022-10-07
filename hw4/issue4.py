@@ -30,4 +30,3 @@ def test_one_city_with_repetition():
     ]
     assert fit_transform(cities) == exp
 
-
