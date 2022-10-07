@@ -1,0 +1,9 @@
+test_dublicate (__main__.OneHotEncodeTest) ... ok
+test_exception (__main__.OneHotEncodeTest) ... ok
+test_one_city (__main__.OneHotEncodeTest) ... ok
+test_usual_case (__main__.OneHotEncodeTest) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK

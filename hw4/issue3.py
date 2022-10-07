@@ -26,3 +26,10 @@ class OneHotEncodeTest(unittest.TestCase):
             ('Moscow', [1])
         ]
         self.assertSequenceEqual(fit_transform('Moscow', 'Moscow'), exp)
+
+
+if __name__ == '__main__':
+    log_file = 'result_issue3.txt'
+    with open(log_file, "w") as f:
+        runner = unittest.TextTestRunner(f, verbosity=2)
+        unittest.main(testRunner=runner)
