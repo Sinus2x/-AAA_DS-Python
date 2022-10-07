@@ -33,7 +33,6 @@ def encode(message: str) -> str:
 
     >>> encode('$$')
     Traceback (most recent call last):
-    ...
     KeyError: '$'
     """
     encoded_signs = [
